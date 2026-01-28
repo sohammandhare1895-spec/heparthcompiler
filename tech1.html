@@ -1,0 +1,1469 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">Heparth - Learn Programming 100% Free</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" id="pageDescription" content="Learn HTML, CSS, JavaScript, Python, Java, C++ and Data Structures & Algorithms with 100% free interactive tutorials, compiler, and interview questions.">
+    <meta name="keywords" id="pageKeywords" content="programming, learn coding, web development, HTML, CSS, JavaScript, Python, Java, C++, free coding">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #7c3aed;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --text-color: #334155;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: var(--light-color);
+            color: var(--text-color);
+            transition: all 0.3s;
+        }
+
+        body.dark-theme {
+            --light-color: #0f172a;
+            --text-color: #cbd5e1;
+            background: var(--light-color);
+            color: var(--text-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        .main-header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            transition: all 0.3s;
+        }
+
+        .dark-theme .main-header {
+            background: #1e293b;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo a {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            gap: 10px;
+        }
+
+        .tagline {
+            margin-left: 15px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .dark-theme .tagline {
+            color: #94a3b8;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn-theme,
+        .btn-search {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: var(--text-color);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .btn-theme:hover,
+        .btn-search:hover {
+            background: rgba(37, 99, 235, 0.1);
+        }
+
+        /* Search Bar */
+        .search-bar {
+            background: white;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .dark-theme .search-bar {
+            background: #1e293b;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        #globalSearch {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .dark-theme #globalSearch {
+            background: #334155;
+            border-color: #475569;
+            color: white;
+        }
+
+        #globalSearch:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn-search-close {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        .dark-theme .btn-search-close {
+            color: #94a3b8;
+        }
+
+        /* Sections */
+        .section {
+            padding: 80px 0;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        /* Hero */
+        .hero {
+            text-align: center;
+            padding: 60px 0;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .dark-theme .hero h1 {
+            color: white;
+        }
+
+        .highlight {
+            color: var(--primary-color);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .dark-theme .subtitle {
+            color: #94a3b8;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        /* Buttons */
+        .btn-primary,
+        .btn-secondary {
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .dark-theme .btn-secondary {
+            background: #1e293b;
+            color: white;
+            border-color: white;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* Languages Tabs */
+        .languages-section {
+            margin: 80px 0;
+        }
+
+        .languages-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .languages-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .language-tab {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            width: 180px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .language-tab {
+            background: #1e293b;
+        }
+
+        .language-tab:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+        }
+
+        .language-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .language-tab h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        /* Featured Tutorials */
+        .featured-section {
+            margin: 80px 0;
+        }
+
+        .featured-section h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .dark-theme .featured-card {
+            background: #1e293b;
+        }
+
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .featured-header {
+            padding: 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .featured-header h3 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .featured-body {
+            padding: 25px;
+        }
+
+        .featured-body p {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .dark-theme .featured-body p {
+            color: #94a3b8;
+        }
+
+        .tutorial-meta {
+            display: flex;
+            justify-content: space-between;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Stats */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0;
+            border-radius: 20px;
+            margin: 80px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 20px;
+        }
+
+        .stat-item i {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Tutorials Grid */
+        .tutorials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .tutorial-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+        }
+
+        .dark-theme .tutorial-card {
+            background: #1e293b;
+        }
+
+        .tutorial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .tutorial-card .badge {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .badge.beginner {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        .badge.intermediate {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .badge.advanced {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        /* Compiler */
+        .compiler-container {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+
+        .dark-theme .compiler-container {
+            background: #1e293b;
+        }
+
+        .compiler-header {
+            background: var(--dark-color);
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .compiler-tabs {
+            display: flex;
+            gap: 10px;
+        }
+
+        .compiler-tab {
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .compiler-tab.active {
+            background: var(--primary-color);
+        }
+
+        .compiler-tab:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-run {
+            background: var(--success-color);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .compiler-editor {
+            padding: 20px;
+        }
+
+        #codeEditor {
+            width: 100%;
+            height: 300px;
+            padding: 20px;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            resize: vertical;
+            background: #f8fafc;
+            color: var(--text-color);
+        }
+
+        .dark-theme #codeEditor {
+            background: #0f172a;
+            border-color: #334155;
+            color: white;
+        }
+
+        .compiler-output {
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+        }
+
+        .dark-theme .compiler-output {
+            border-color: #334155;
+        }
+
+        #outputContainer {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            min-height: 100px;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .dark-theme #outputContainer {
+            background: #0f172a;
+            color: white;
+        }
+
+        /* Questions */
+        .questions-container {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .questions-sidebar {
+            width: 300px;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+
+        .dark-theme .questions-sidebar {
+            background: #1e293b;
+        }
+
+        .categories-list {
+            margin-top: 20px;
+        }
+
+        .category-item {
+            padding: 12px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-bottom: 10px;
+        }
+
+        .category-item:hover,
+        .category-item.active {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .questions-list {
+            flex: 1;
+        }
+
+        .question-item {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .dark-theme .question-item {
+            background: #1e293b;
+        }
+
+        .question-item h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .question-answer {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .dark-theme .question-answer {
+            background: #0f172a;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .languages-tabs {
+                gap: 15px;
+            }
+
+            .language-tab {
+                width: 150px;
+            }
+
+            .questions-container {
+                flex-direction: column;
+            }
+
+            .questions-sidebar {
+                width: 100%;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary,
+            .btn-secondary {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        /* Load More */
+        .load-more {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Filter */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin: 30px 0;
+        }
+
+        .filter-bar select,
+        .filter-bar input {
+            padding: 12px 20px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+            flex: 1;
+        }
+
+        .dark-theme .filter-bar select,
+        .dark-theme .filter-bar input {
+            background: #1e293b;
+            border-color: #334155;
+            color: white;
+        }
+
+        .tutorials-filter {
+            display: flex;
+            gap: 20px;
+            margin: 30px 0;
+            align-items: center;
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 2;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 15px 20px 15px 45px;
+            border: 2px solid #e2e8f0;
+            border-radius: 10px;
+            font-size: 1rem;
+        }
+
+        .dark-theme .search-box input {
+            background: #1e293b;
+            border-color: #334155;
+            color: white;
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #666;
+        }
+
+        .dark-theme .search-box i {
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <a href="#">
+                        <i class="fas fa-code"></i>
+                        <span id="siteName">Heparth</span>
+                    </a>
+                    <span class="tagline" id="siteTagline">Learn Programming 100% Free</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link active"><i class="fas fa-home"></i> Home</a>
+                    <a href="#tutorials" class="nav-link"><i class="fas fa-book"></i> Tutorials</a>
+                    <a href="#compiler" class="nav-link"><i class="fas fa-code"></i> Compiler</a>
+                    <a href="#questions" class="nav-link"><i class="fas fa-question-circle"></i> Interview</a>
+                    <a href="#projects" class="nav-link"><i class="fas fa-project-diagram"></i> Projects</a>
+                    <a href="#about" class="nav-link"><i class="fas fa-info-circle"></i> About</a>
+                </div>
+                <div class="nav-actions">
+                    <button class="btn-theme" onclick="toggleTheme()">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-search" onclick="toggleSearch()">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Search Bar -->
+    <div id="searchBar" class="search-bar">
+        <div class="container">
+            <input type="text" id="globalSearch" placeholder="Search tutorials, questions, code examples...">
+            <button class="btn-search-close" onclick="toggleSearch()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="container">
+                <div class="hero">
+                    <h1 id="heroTitle">Learn Programming <span class="highlight">100% Free</span></h1>
+                    <p id="heroSubtitle" class="subtitle">Master HTML, CSS, JavaScript, Python, Java, C++ and Data Structures with interactive tutorials, live compiler, and interview questions.</p>
+                    <div class="hero-actions">
+                        <a href="#tutorials" class="btn-primary">
+                            <i class="fas fa-play-circle"></i> Start Learning
+                        </a>
+                        <a href="#compiler" class="btn-secondary">
+                            <i class="fas fa-code"></i> Try Compiler
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Languages Tabs (Updated from Admin) -->
+                <div class="languages-section">
+                    <h2><i class="fas fa-language"></i> Programming Languages</h2>
+                    <div class="languages-tabs" id="languagesTabs">
+                        <!-- Tabs will be loaded from database -->
+                    </div>
+                </div>
+
+                <!-- Featured Content (Updated from Admin) -->
+                <div class="featured-section">
+                    <h2><i class="fas fa-star"></i> Featured Tutorials</h2>
+                    <div class="featured-grid" id="featuredTutorials">
+                        <!-- Tutorials will be loaded from database -->
+                    </div>
+                </div>
+
+                <!-- Stats -->
+                <div class="stats-section">
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <i class="fas fa-language"></i>
+                            <h3 id="statsLanguages">0</h3>
+                            <p>Programming Languages</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-book"></i>
+                            <h3 id="statsTutorials">0</h3>
+                            <p>Free Tutorials</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-code"></i>
+                            <h3 id="statsExamples">0</h3>
+                            <p>Code Examples</p>
+                        </div>
+                        <div class="stat-item">
+                            <i class="fas fa-question-circle"></i>
+                            <h3 id="statsQuestions">0</h3>
+                            <p>Interview Questions</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tutorials Section -->
+        <section id="tutorials" class="section">
+            <div class="container">
+                <h2><i class="fas fa-book"></i> Interactive Tutorials</h2>
+                <div class="tutorials-filter">
+                    <div class="filter-options">
+                        <select id="tutorialFilterLanguage">
+                            <option value="all">All Languages</option>
+                            <!-- Languages will be added dynamically -->
+                        </select>
+                        <select id="tutorialFilterLevel">
+                            <option value="all">All Levels</option>
+                            <option value="beginner">Beginner</option>
+                            <option value="intermediate">Intermediate</option>
+                            <option value="advanced">Advanced</option>
+                        </select>
+                    </div>
+                    <div class="search-box">
+                        <input type="text" id="tutorialSearch" placeholder="Search tutorials...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                <div class="tutorials-grid" id="tutorialsGrid">
+                    <!-- Tutorials will be loaded from database -->
+                </div>
+                <div class="load-more">
+                    <button class="btn-secondary" onclick="loadMoreTutorials()">
+                        <i class="fas fa-plus"></i> Load More Tutorials
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Compiler Section -->
+        <section id="compiler" class="section">
+            <div class="container">
+                <h2><i class="fas fa-code"></i> Online Code Compiler</h2>
+                <div class="compiler-container">
+                    <div class="compiler-header">
+                        <div class="compiler-tabs" id="compilerTabs">
+                            <!-- Compiler tabs will be loaded from database -->
+                        </div>
+                        <div class="compiler-actions">
+                            <button class="btn-run" onclick="runCode()">
+                                <i class="fas fa-play"></i> Run
+                            </button>
+                            <button class="btn-secondary" onclick="saveCode()">
+                                <i class="fas fa-save"></i> Save
+                            </button>
+                            <button class="btn-secondary" onclick="resetCode()">
+                                <i class="fas fa-redo"></i> Reset
+                            </button>
+                        </div>
+                    </div>
+                    <div class="compiler-editor">
+                        <textarea id="codeEditor" placeholder="Write your code here..."></textarea>
+                    </div>
+                    <div class="compiler-output">
+                        <h3><i class="fas fa-terminal"></i> Output</h3>
+                        <div id="outputContainer">
+                            <p>Output will appear here...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interview Questions Section -->
+        <section id="questions" class="section">
+            <div class="container">
+                <h2><i class="fas fa-question-circle"></i> Interview Questions</h2>
+                <div class="questions-container">
+                    <div class="questions-sidebar">
+                        <h3><i class="fas fa-folder"></i> Categories</h3>
+                        <div class="categories-list" id="questionCategories">
+                            <!-- Categories will be loaded from database -->
+                        </div>
+                    </div>
+                    <div class="questions-list" id="questionsList">
+                        <!-- Questions will be loaded from database -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="container">
+                <h2><i class="fas fa-project-diagram"></i> Projects</h2>
+                <div class="projects-grid" id="projectsGrid">
+                    <!-- Projects will be loaded from database -->
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="container">
+                <h2><i class="fas fa-info-circle"></i> About Heparth</h2>
+                <div class="about-content">
+                    <p>Heparth is a 100% free platform for learning programming and web development.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Database connection - reads from the same localStorage as admin
+        class UserDatabase {
+            constructor() {
+                this.dbName = 'heparth_database';
+                this.init();
+            }
+
+            get() {
+                return JSON.parse(localStorage.getItem(this.dbName)) || {};
+            }
+
+            init() {
+                this.loadData();
+                // Listen for changes from admin panel
+                window.addEventListener('databaseUpdated', () => {
+                    this.loadData();
+                });
+            }
+
+            loadData() {
+                const data = this.get();
+                
+                // Update page metadata
+                if (data.settings) {
+                    document.title = data.settings.siteTitle;
+                    document.getElementById('pageTitle').textContent = data.settings.siteTitle;
+                    document.getElementById('pageDescription').setAttribute('content', data.settings.siteDescription);
+                    document.getElementById('heroTitle').innerHTML = `Learn Programming <span class="highlight">100% Free</span>`;
+                    document.getElementById('heroSubtitle').textContent = data.settings.siteDescription;
+                    document.getElementById('siteName').textContent = data.settings.siteTitle.split(' - ')[0];
+                    
+                    // Update theme if changed
+                    if (data.settings.theme === 'dark') {
+                        document.body.classList.add('dark-theme');
+                    } else if (data.settings.theme === 'light') {
+                        document.body.classList.remove('dark-theme');
+                    } else {
+                        // Auto theme based on system
+                        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                            document.body.classList.add('dark-theme');
+                        }
+                    }
+                }
+
+                // Load languages
+                this.loadLanguages(data);
+                
+                // Load tutorials
+                this.loadTutorials(data);
+                
+                // Load questions
+                this.loadQuestions(data);
+                
+                // Load projects
+                this.loadProjects(data);
+                
+                // Update stats
+                this.updateStats(data);
+            }
+
+            loadLanguages(data) {
+                const container = document.getElementById('languagesTabs');
+                const filter = document.getElementById('tutorialFilterLanguage');
+                const compilerTabs = document.getElementById('compilerTabs');
+                
+                container.innerHTML = '';
+                filter.innerHTML = '<option value="all">All Languages</option>';
+                compilerTabs.innerHTML = '';
+                
+                if (data.languages && data.languages.length > 0) {
+                    data.languages.forEach(lang => {
+                        if (lang.enabled) {
+                            // Language tabs
+                            const tab = document.createElement('div');
+                            tab.className = 'language-tab';
+                            tab.innerHTML = `
+                                <div class="language-icon" style="color: ${lang.color}">
+                                    <i class="${lang.icon}"></i>
+                                </div>
+                                <h3>${lang.name}</h3>
+                                <p>${lang.description}</p>
+                            `;
+                            tab.onclick = () => this.filterByLanguage(lang.name);
+                            container.appendChild(tab);
+
+                            // Filter option
+                            const option = document.createElement('option');
+                            option.value = lang.name;
+                            option.textContent = lang.name;
+                            filter.appendChild(option);
+
+                            // Compiler tab
+                            const compilerTab = document.createElement('div');
+                            compilerTab.className = 'compiler-tab';
+                            compilerTab.textContent = lang.name;
+                            compilerTab.onclick = () => this.selectCompilerLanguage(lang.name);
+                            compilerTabs.appendChild(compilerTab);
+                        }
+                    });
+                    
+                    // Activate first compiler tab
+                    if (compilerTabs.children.length > 0) {
+                        compilerTabs.children[0].classList.add('active');
+                    }
+                }
+            }
+
+            loadTutorials(data) {
+                const featuredContainer = document.getElementById('featuredTutorials');
+                const tutorialsContainer = document.getElementById('tutorialsGrid');
+                
+                featuredContainer.innerHTML = '';
+                tutorialsContainer.innerHTML = '';
+                
+                if (data.tutorials && data.tutorials.length > 0) {
+                    data.tutorials.forEach(tutorial => {
+                        const card = this.createTutorialCard(tutorial);
+                        
+                        // Add to featured if marked as featured
+                        if (tutorial.featured) {
+                            featuredContainer.appendChild(card.cloneNode(true));
+                        }
+                        
+                        // Add to tutorials grid
+                        tutorialsContainer.appendChild(card);
+                    });
+                }
+            }
+
+            createTutorialCard(tutorial) {
+                const card = document.createElement('div');
+                card.className = 'tutorial-card';
+                card.innerHTML = `
+                    <div class="featured-header">
+                        <h3>${tutorial.title}</h3>
+                        <div class="tutorial-meta">
+                            <span>${tutorial.language}</span>
+                            <span class="badge ${tutorial.level}">${tutorial.level}</span>
+                        </div>
+                    </div>
+                    <div class="featured-body">
+                        <p>${tutorial.content.substring(0, 100)}...</p>
+                        <button class="btn-primary" onclick="openTutorial(${tutorial.id})">
+                            <i class="fas fa-book-open"></i> Read Tutorial
+                        </button>
+                    </div>
+                `;
+                return card;
+            }
+
+            loadQuestions(data) {
+                const categoriesContainer = document.getElementById('questionCategories');
+                const questionsContainer = document.getElementById('questionsList');
+                
+                categoriesContainer.innerHTML = '';
+                questionsContainer.innerHTML = '';
+                
+                if (data.questions && data.questions.length > 0) {
+                    // Group by category
+                    const categories = {};
+                    data.questions.forEach(q => {
+                        if (!categories[q.category]) {
+                            categories[q.category] = [];
+                        }
+                        categories[q.category].push(q);
+                    });
+
+                    // Create category buttons
+                    Object.keys(categories).forEach(category => {
+                        const categoryItem = document.createElement('div');
+                        categoryItem.className = 'category-item';
+                        categoryItem.textContent = category;
+                        categoryItem.onclick = () => this.filterQuestionsByCategory(category, categories[category]);
+                        categoriesContainer.appendChild(categoryItem);
+                    });
+
+                    // Show all questions initially
+                    this.filterQuestionsByCategory('All', data.questions);
+                }
+            }
+
+            filterQuestionsByCategory(category, questions) {
+                const container = document.getElementById('questionsList');
+                container.innerHTML = '';
+                
+                // Update active category
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.remove('active');
+                    if (item.textContent === category) {
+                        item.classList.add('active');
+                    }
+                });
+                
+                questions.forEach(q => {
+                    const questionItem = document.createElement('div');
+                    questionItem.className = 'question-item';
+                    questionItem.innerHTML = `
+                        <h3>${q.question}</h3>
+                        <div class="question-answer">
+                            <p>${q.answer}</p>
+                            <div class="question-meta">
+                                <span>Category: ${q.category}</span>
+                                <span>Difficulty: ${q.difficulty}</span>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(questionItem);
+                });
+            }
+
+            loadProjects(data) {
+                const container = document.getElementById('projectsGrid');
+                container.innerHTML = '';
+                
+                if (data.projects && data.projects.length > 0) {
+                    data.projects.forEach(project => {
+                        const card = document.createElement('div');
+                        card.className = 'tutorial-card';
+                        card.innerHTML = `
+                            <div class="featured-header">
+                                <h3>${project.title}</h3>
+                                <div class="tutorial-meta">
+                                    <span>${project.difficulty}</span>
+                                </div>
+                            </div>
+                            <div class="featured-body">
+                                <p>${project.description}</p>
+                                <div class="project-languages">
+                                    ${project.languages?.map(lang => 
+                                        `<span class="badge">${lang}</span>`
+                                    ).join('')}
+                                </div>
+                                <button class="btn-primary" onclick="viewProject(${project.id})">
+                                    <i class="fas fa-eye"></i> View Project
+                                </button>
+                            </div>
+                        `;
+                        container.appendChild(card);
+                    });
+                }
+            }
+
+            updateStats(data) {
+                document.getElementById('statsLanguages').textContent = data.languages?.length || 0;
+                document.getElementById('statsTutorials').textContent = data.tutorials?.length || 0;
+                document.getElementById('statsExamples').textContent = data.tutorials?.length || 0;
+                document.getElementById('statsQuestions').textContent = data.questions?.length || 0;
+            }
+
+            filterByLanguage(language) {
+                document.querySelectorAll('.language-tab').forEach(tab => {
+                    tab.style.borderColor = 'transparent';
+                });
+                event.target.style.borderColor = 'var(--primary-color)';
+                
+                // Filter tutorials
+                document.getElementById('tutorialFilterLanguage').value = language;
+                this.filterTutorials();
+                
+                // Switch to tutorials section
+                showSection('tutorials');
+            }
+
+            filterTutorials() {
+                const language = document.getElementById('tutorialFilterLanguage').value;
+                const level = document.getElementById('tutorialFilterLevel').value;
+                const search = document.getElementById('tutorialSearch').value.toLowerCase();
+                
+                const cards = document.querySelectorAll('.tutorial-card');
+                cards.forEach(card => {
+                    const cardLanguage = card.querySelector('span:first-child').textContent;
+                    const cardLevel = card.querySelector('.badge').textContent.toLowerCase();
+                    const title = card.querySelector('h3').textContent.toLowerCase();
+                    
+                    const languageMatch = language === 'all' || cardLanguage === language;
+                    const levelMatch = level === 'all' || cardLevel === level;
+                    const searchMatch = !search || title.includes(search);
+                    
+                    card.style.display = languageMatch && levelMatch && searchMatch ? 'block' : 'none';
+                });
+            }
+
+            selectCompilerLanguage(language) {
+                document.querySelectorAll('.compiler-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                });
+                event.target.classList.add('active');
+                
+                // Set placeholder based on language
+                const editor = document.getElementById('codeEditor');
+                const placeholders = {
+                    'HTML': '<!DOCTYPE html>\n<html>\n<head>\n    <title>My Page</title>\n</head>\n<body>\n    <h1>Hello World!</h1>\n</body>\n</html>',
+                    'CSS': 'body {\n    background: #f0f0f0;\n    font-family: Arial, sans-serif;\n}\n\nh1 {\n    color: #333;\n    text-align: center;\n}',
+                    'JavaScript': 'console.log("Hello World!");\n\nfunction greet(name) {\n    return `Hello, ${name}!`;\n}\n\nconsole.log(greet("Developer"));',
+                    'Python': 'print("Hello World!")\n\ndef greet(name):\n    return f"Hello, {name}!"\n\nprint(greet("Developer"))',
+                    'Java': 'public class Main {\n    public static void main(String[] args) {\n        System.out.println("Hello World!");\n    }\n}',
+                    'C++': '#include <iostream>\nusing namespace std;\n\nint main() {\n    cout << "Hello World!" << endl;\n    return 0;\n}'
+                };
+                
+                editor.placeholder = placeholders[language] || 'Write your code here...';
+            }
+        }
+
+        // User interface functions
+        function toggleSearch() {
+            const searchBar = document.getElementById('searchBar');
+            searchBar.style.display = searchBar.style.display === 'flex' ? 'none' : 'flex';
+            if (searchBar.style.display === 'flex') {
+                document.getElementById('globalSearch').focus();
+            }
+        }
+
+        function toggleTheme() {
+            document.body.classList.toggle('dark-theme');
+            const icon = document.querySelector('.btn-theme i');
+            icon.className = document.body.classList.contains('dark-theme') 
+                ? 'fas fa-sun' 
+                : 'fas fa-moon';
+            
+            // Save theme preference
+            const data = JSON.parse(localStorage.getItem('heparth_database')) || {};
+            if (!data.settings) data.settings = {};
+            data.settings.theme = document.body.classList.contains('dark-theme') ? 'dark' : 'light';
+            localStorage.setItem('heparth_database', JSON.stringify(data));
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${sectionId}`) {
+                    link.classList.add('active');
+                }
+            });
+            
+            // Hide search bar if open
+            document.getElementById('searchBar').style.display = 'none';
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        function runCode() {
+            const code = document.getElementById('codeEditor').value;
+            const output = document.getElementById('outputContainer');
+            
+            try {
+                // Simple code execution simulation
+                if (code.includes('console.log')) {
+                    const logs = [];
+                    const originalLog = console.log;
+                    console.log = (...args) => {
+                        logs.push(args.join(' '));
+                    };
+                    
+                    eval(code);
+                    console.log = originalLog;
+                    
+                    output.innerHTML = logs.join('<br>') || 'Code executed successfully (no output)';
+                } else if (code.trim().startsWith('<')) {
+                    // HTML code
+                    output.innerHTML = code;
+                } else {
+                    // Other languages - just show the code
+                    output.textContent = `Code preview:\n\n${code}`;
+                }
+            } catch (error) {
+                output.textContent = `Error: ${error.message}`;
+            }
+        }
+
+        function saveCode() {
+            const code = document.getElementById('codeEditor').value;
+            localStorage.setItem('saved_code', code);
+            alert('Code saved locally!');
+        }
+
+        function resetCode() {
+            if (confirm('Are you sure you want to reset the code?')) {
+                document.getElementById('codeEditor').value = '';
+                document.getElementById('outputContainer').textContent = 'Output will appear here...';
+            }
+        }
+
+        function loadMoreTutorials() {
+            alert('Loading more tutorials...');
+            // In a real app, this would fetch more data from server
+        }
+
+        function openTutorial(id) {
+            const data = JSON.parse(localStorage.getItem('heparth_database')) || {};
+            const tutorial = data.tutorials?.find(t => t.id === id);
+            if (tutorial) {
+                alert(`Opening tutorial: ${tutorial.title}\n\n${tutorial.content}`);
+            }
+        }
+
+        function viewProject(id) {
+            const data = JSON.parse(localStorage.getItem('heparth_database')) || {};
+            const project = data.projects?.find(p => p.id === id);
+            if (project) {
+                alert(`Project: ${project.title}\n\n${project.description}`);
+            }
+        }
+
+        // Navigation
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const sectionId = this.getAttribute('href').substring(1);
+                showSection(sectionId);
+            });
+        });
+
+        // Search functionality
+        document.getElementById('globalSearch').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                const query = this.value.toLowerCase();
+                if (query) {
+                    // Search through content
+                    showSection('tutorials');
+                    document.getElementById('tutorialSearch').value = query;
+                    db.filterTutorials();
+                }
+            }
+        });
+
+        document.getElementById('tutorialSearch').addEventListener('keyup', function() {
+            db.filterTutorials();
+        });
+
+        document.getElementById('tutorialFilterLanguage').addEventListener('change', function() {
+            db.filterTutorials();
+        });
+
+        document.getElementById('tutorialFilterLevel').addEventListener('change', function() {
+            db.filterTutorials();
+        });
+
+        // Initialize
+        const db = new UserDatabase();
+        
+        // Check for saved theme
+        const savedData = JSON.parse(localStorage.getItem('heparth_database')) || {};
+        if (savedData.settings?.theme === 'dark') {
+            document.body.classList.add('dark-theme');
+            document.querySelector('.btn-theme i').className = 'fas fa-sun';
+        } else if (savedData.settings?.theme === 'light') {
+            document.body.classList.remove('dark-theme');
+            document.querySelector('.btn-theme i').className = 'fas fa-moon';
+        }
+        
+        // Load saved code
+        const savedCode = localStorage.getItem('saved_code');
+        if (savedCode) {
+            document.getElementById('codeEditor').value = savedCode;
+        }
+    </script>
+</body>
+</html>
